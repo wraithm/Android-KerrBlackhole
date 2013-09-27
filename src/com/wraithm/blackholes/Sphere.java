@@ -6,8 +6,7 @@ import java.nio.FloatBuffer;
 import javax.microedition.khronos.opengles.GL10;
 
 public class Sphere { 
-
-	static private FloatBuffer sphereVertex;
+    static private FloatBuffer sphereVertex;
     static private FloatBuffer sphereNormal;
     //static float sphere_parms[]=new float[3];
 
@@ -23,7 +22,6 @@ public class Sphere {
      * @param radius
      * @param step
      */
-
     public Sphere(float radius, double step) {
         this.mRaduis = radius;
         this.mStep = step;
@@ -34,8 +32,8 @@ public class Sphere {
     }
     
     public void setRadius(float radius) {
-    	this.mRaduis = radius;
-    	mPoints = build();
+        this.mRaduis = radius;
+        mPoints = build();
     }
 
     public void draw(GL10 gl) {
@@ -53,7 +51,6 @@ public class Sphere {
     }
 
     private int build() {
-
         /**
          * x = p * sin(phi) * cos(theta)
          * y = p * sin(phi) * sin(theta)

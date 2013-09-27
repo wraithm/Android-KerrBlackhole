@@ -24,19 +24,19 @@ public class BlackholesActivity extends Activity {
 }
 
 class BlackholesSurfaceView extends GLSurfaceView {
-	private final float TOUCH_SCALE_FACTOR = 180.0f / 320;
+    private final float TOUCH_SCALE_FACTOR = 180.0f / 320;
     private OpenGLRenderer mRenderer;
-	private float mPreviousX;
-	private float mPreviousY;
+    private float mPreviousX;
+    private float mPreviousY;
     
-	public BlackholesSurfaceView(Context context){
+    public BlackholesSurfaceView(Context context) {
         super(context);
         mRenderer = new OpenGLRenderer();
         setRenderer(mRenderer);
         //setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
     }
-	
-	@Override 
+    
+    @Override 
     public boolean onTouchEvent(MotionEvent e) {
         // MotionEvent reports input details from the touch screen
         // and other input controls. In this case, you are only
@@ -46,31 +46,31 @@ class BlackholesSurfaceView extends GLSurfaceView {
         float y = e.getY();
         
         switch (e.getAction()) {
-	        case MotionEvent.ACTION_MOVE:
-	        	float dx = (x - mPreviousX)*TOUCH_SCALE_FACTOR/100;
-	        	mRenderer.camera.rotateCamera(dx);
-	        	float dy = (y - mPreviousY)*TOUCH_SCALE_FACTOR/100;
-	        	mRenderer.camera.moveForeward(-dy);
+            case MotionEvent.ACTION_MOVE:
+                float dx = (x - mPreviousX)*TOUCH_SCALE_FACTOR/100;
+                mRenderer.camera.rotateCamera(dx);
+                float dy = (y - mPreviousY)*TOUCH_SCALE_FACTOR/100;
+                mRenderer.camera.moveForeward(-dy);
         }
 
-	    requestRender();
+        requestRender();
 
-        //                float dx = x - mPreviousX;
-        //                float dy = y - mPreviousY;
-        //    
-        //                if (y > getHeight() / 2) {
-        //                  dx = dx * -1 ;
-        //                }
-        //   
-        //                if (x < getWidth() / 2) {
-        //                  dy = dy * -1 ;
-        //                }
-        //              
-        //                mRenderer.mAngle += (dx + dy) * TOUCH_SCALE_FACTOR;
-        //                requestRender();
+        //float dx = x - mPreviousX;
+        //float dy = y - mPreviousY;
+        //
+        //if (y > getHeight() / 2) {
+        //  dx = dx * -1 ;
+        //}
+        //
+        //if (x < getWidth() / 2) {
+        //  dy = dy * -1 ;
+        //}
+        //
+        //mRenderer.mAngle += (dx + dy) * TOUCH_SCALE_FACTOR;
+        //requestRender();
 
         mPreviousX = x;
         mPreviousY = y;
         return true;
-	} 
+    } 
 }

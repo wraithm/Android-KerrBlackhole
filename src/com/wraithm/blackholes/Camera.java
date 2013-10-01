@@ -4,21 +4,11 @@ public class Camera {
     public Vec pos, view, up;
     private Vec vel;
     
-    public Camera(Vec pos, Vec view, Vec up) {
-        this.setCameraPosition(pos, view, up);
-    }
-    
     public Camera(
             float posx, float posy, float posz,
             float viewx, float viewy, float viewz,
             float upx, float upy, float upz) {
         this.setCameraPosition(posx, posy, posz, viewx, viewy, viewz, upx, upy, upz);
-    }
-    
-    public void setCameraPosition(Vec pos, Vec view, Vec up) {
-        this.pos = pos;
-        this.view = view;
-        this.up = up;
     }
     
     public void setCameraPosition(
@@ -31,7 +21,7 @@ public class Camera {
     }
     
     public void moveForeward(float speed) {
-        vel = new Vec().sub(view, pos);
+        vel = Vec.sub(view, pos);
         
         pos.x = pos.x + vel.x*speed;
         pos.y = pos.y + vel.y*speed;
@@ -43,12 +33,12 @@ public class Camera {
     }
     
     public void moveByVec(Vec dir, float speed) {
-        pos = dir.add(dir, pos);
-        view = dir.add(dir, view);
+        pos = Vec.add(dir, pos);
+        view = Vec.add(dir, view);
     }
     
     public void rotateCamera(float speed) {
-        vel = new Vec().sub(view, pos);
+        vel = Vec.sub(view, pos);
         
         view.z = (float)(pos.z + Math.sin(speed)*vel.x + Math.cos(speed)*vel.z);
         view.x = (float)(pos.x + Math.cos(speed)*vel.x - Math.sin(speed)*vel.z);

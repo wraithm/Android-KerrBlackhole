@@ -93,7 +93,6 @@ public class OpenGLRenderer implements Renderer {
         sphere.draw(gl);
         //gl.glPopMatrix();
         
-        //camera.rotateCamera(-0.1f*mAngle);
         
         //kerr.drawKerr(gl);
         //kerr.drawTrace(gl);

@@ -1,15 +1,12 @@
 package com.wraithm.blackholes;
 
-//import java.nio.ByteBuffer;
-//import java.nio.ByteOrder;
-//import java.nio.FloatBuffer;
 import javax.microedition.khronos.opengles.GL10;
 import android.os.SystemClock;
 
+// TODO Plot path of particle
 public class Kerr {
     private final double INCREMENT = 0.003f;
     private final double SIMSPEED = 10000;
-    //private final int HISTORY = 1000;
     private final int PREVSTEP = 0;
     
     private double tint = 5.0;
@@ -20,12 +17,7 @@ public class Kerr {
     
     private double prevpos[] = {0, 0.0, 18.0, Math.PI/2, 0.0, 23.0, 0.0, 0.08, 0.06};
     
-    //public float historyx[], historyy[], historyz[];
-    //public int iterations;
     private int step;
-    
-    //private FloatBuffer traceVertex;
-    //private FloatBuffer traceNormal;
     
     public Kerr(Sphere sphere) {
         this.sphere = sphere;
@@ -64,14 +56,6 @@ public class Kerr {
         float y = (float) (Y[2] * Math.cos(Y[3]));
         float z = (float) (Math.sqrt(Math.pow(Y[2], 2) + Math.pow(solver.a, 2)) * Math.sin(Y[3]) * Math.sin(Y[4]));
         
-//      if(iterations < HISTORY) {
-//          historyx[iterations] = x;
-//          historyy[iterations] = y;
-//          historyz[iterations] = z;
-//
-//          iterations++;
-//      }
-        
         gl.glPushMatrix();
             gl.glColor4f(0.0f, 0.0f, 1.0f, 0.0f);
             gl.glTranslatef(x, y, z);
@@ -88,41 +72,4 @@ public class Kerr {
             step++;
         }
     }
-    
-//  public void drawTrace(GL10 gl) {
-//      traceVertex = ByteBuffer.allocateDirect(iterations*4*3).order(ByteOrder.nativeOrder()).asFloatBuffer();
-//        traceNormal = ByteBuffer.allocateDirect(iterations*4*3).order(ByteOrder.nativeOrder()).asFloatBuffer();
-//        
-//        for(int i = 0; i < iterations; i++) {
-//          traceVertex.put(historyx[i]);
-//          traceVertex.put(historyy[i]);
-//          traceVertex.put(historyz[i]);
-//          traceNormal.put(historyx[i]);
-//          traceNormal.put(historyy[i]);
-//          traceNormal.put(historyz[i]);
-//        }
-//        
-//        traceVertex.put(0.0f);
-//        traceVertex.put(0.0f);
-//        traceVertex.put(0.0f);
-//        traceNormal.put(0.0f);
-//        traceNormal.put(0.0f);
-//        traceNormal.put(0.0f);
-//        
-//        traceVertex.position(0);
-//        traceNormal.position(0);
-//        
-//        gl.glFrontFace(GL10.GL_CW);
-//        gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
-//        gl.glEnableClientState(GL10.GL_NORMAL_ARRAY);
-//        gl.glVertexPointer(3, GL10.GL_FLOAT, 0, traceVertex);
-//        gl.glNormalPointer(GL10.GL_FLOAT, 0, traceNormal);
-//        
-//      gl.glColor4f(1.0f, 1.0f, 1.0f, 0.0f);
-//        gl.glDrawArrays(GL10.GL_LINE_STRIP, 0, iterations + 1);
-//        
-//        gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
-//        gl.glDisableClientState(GL10.GL_NORMAL_ARRAY);
-//      
-//  }
 }

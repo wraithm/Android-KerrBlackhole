@@ -55,22 +55,9 @@ class BlackholesSurfaceView extends GLSurfaceView {
 
         requestRender();
 
-        //float dx = x - mPreviousX;
-        //float dy = y - mPreviousY;
-        //
-        //if (y > getHeight() / 2) {
-        //  dx = dx * -1 ;
-        //}
-        //
-        //if (x < getWidth() / 2) {
-        //  dy = dy * -1 ;
-        //}
-        //
-        //mRenderer.mAngle += (dx + dy) * TOUCH_SCALE_FACTOR;
-        //requestRender();
-
         mPreviousX = x;
         mPreviousY = y;
+
         return true;
     } 
 }

@@ -8,7 +8,6 @@ import javax.microedition.khronos.opengles.GL10;
 public class Sphere { 
     static private FloatBuffer sphereVertex;
     static private FloatBuffer sphereNormal;
-    //static float sphere_parms[]=new float[3];
 
     double mRaduis;
     double mStep;
@@ -25,7 +24,6 @@ public class Sphere {
     public Sphere(float radius, double step) {
         this.mRaduis = radius;
         this.mStep = step;
-        //sphereVertex = FloatBuffer.allocate(40000);
         sphereVertex = ByteBuffer.allocateDirect(40000).order(ByteOrder.nativeOrder()).asFloatBuffer();
         sphereNormal = ByteBuffer.allocateDirect(40000).order(ByteOrder.nativeOrder()).asFloatBuffer();
         mPoints = build();
